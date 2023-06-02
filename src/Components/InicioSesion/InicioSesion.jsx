@@ -1,12 +1,18 @@
 import React from "react";
 import "./StylesInicioSesion.scss";
-import { LuPizza } from 'react-icons/lu';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
+import pizza from './pizza-slice.png'
+
+
 
 const InicioSesion = () => {
   return (
     <main className="main">
       <div className="main__title">
-      <LuPizza className="iconPizza" size={'100px'} />
+      
+      
+      <img src={pizza} alt="" className="iconPizza" />
         
         <span>
           <p>PiSassScript</p>
