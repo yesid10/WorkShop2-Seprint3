@@ -1,36 +1,49 @@
 import React from "react";
 import "./StylesInicioSesion.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
-import pizza from './pizza-slice.png'
-
+import pizza from '../../assets/Images/PizzaLogo.png'
+import { FiUser } from 'react-icons/fi';
+import { FiLock } from 'react-icons/fi';
 
 
 const InicioSesion = () => {
   return (
-    <main className="main">
-      <div className="main__title">
-      
-      
-      <img src={pizza} alt="" className="iconPizza" />
-        
-        <span>
+    <body className="body">
+      <div className="body__opacity">
+        <header className="body__header">
+          <img src={pizza} alt="logo pizza" />
           <p>PiSassScript</p>
-        </span>
+        </header>
+        <main className="body__main">
+          <div>
+            <h3>Inicia sesión en tu cuenta</h3>
+            <p>
+              Disfruta de la mejor Pizza creada para las personas amantes del Código
+            </p>
+          </div>
+          <div>
+            <form action="">
+              <div>
+                <FiUser style={{ color: '#fff', position: 'absolute' }} />
+                <input type="text" placeholder="Usuario" />
+              </div>
+              <div>
+                <FiLock style={{ color: '#fff', position: 'absolute' }} />
+                <input type="text" placeholder="Contraseña" />
+              </div>
+              <section>
+                <button>Iniciar Sesión</button>
+                <p>Restablecer contraseña</p>
+              </section>
+            </form>
+          </div>
+        </main>
+        <footer>
+          <span>¿No tienes una cuenta?</span>
+          <p>Regístrate aquí</p>
+        </footer>
       </div>
-      <div className="main__cuenta">
-        <h2>Inicia sesión en tu cuenta</h2>
-        <p>Disfruta de la mejor pizza creada para las personas amantes del código.</p>
-      </div>
-      <div className="main__registro">
-        <h3>
-          ¿No tienes una cuenta?
-        </h3>
-        <h1>
-          Registrate aqui
-        </h1>
-      </div>
-    </main>
+
+    </body>
   );
 };
 
