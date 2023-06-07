@@ -1,11 +1,70 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./StylesInicioSesion.scss";
 import pizza from '../../assets/Images/PizzaLogo.png'
 import { FiUser } from 'react-icons/fi';
 import { FiLock } from 'react-icons/fi';
+import { getApiFake } from "../services/fuctionGet";
+import { Formik, useFormik } from "formik";
+import * as Yup from 'yup'
+import Swal from "sweetalert2";
+import { searchParamsContext } from "../../Routes/AppRouter";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 const InicioSesion = () => {
+
+  const { usuarios, setUsuarios, datos, setDatos, usuario, contrasena } = useContext(searchParamsContext);
+  //console.log(usuario, contrasena);
+
+
+  const validationFuction = usuarios.some(person => person.correo === usuario && person.contraseña === contrasena);
+  //console.log(validationFuction);
+  const navigate = useNavigate();
+
+  if (validationFuction) {
+    navigate("/home")
+  } 
+
+
+
+  useEffect(() => {
+    getApiFake('usuarios')
+      .then((response) => {
+        if (usuarios.length === 0) {
+          setUsuarios(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      usuario: "",
+      contrasena: "",
+    },
+    validationSchema: Yup.object({
+      usuario: Yup.string().required(true),
+      contrasena: Yup.string().required(true),
+    }),
+    onSubmit: (formValue, { resetForm }) => {
+      if (formValue) {
+        setDatos(formValue);
+        //console.log(formValue);
+        resetForm();
+      }
+
+    }
+  });
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    formik.handleChange(event);
+  };
+  
   return (
     <body className="body">
       <div className="body__opacity">
@@ -21,20 +80,22 @@ const InicioSesion = () => {
             </p>
           </div>
           <div>
-            <form action="">
-              <div>
-                <FiUser style={{ color: '#fff', position: 'absolute' }} />
-                <input type="text" placeholder="Usuario" />
-              </div>
-              <div>
-                <FiLock style={{ color: '#fff', position: 'absolute' }} />
-                <input type="text" placeholder="Contraseña" />
-              </div>
-              <section>
-                <button>Iniciar Sesión</button>
-                <p>Restablecer contraseña</p>
-              </section>
-            </form>
+            <Formik>
+              <form onSubmit={formik.handleSubmit}>
+                <div>
+                  <FiUser style={{ color: '#fff', position: 'absolute' }} />
+                  <input type="text" placeholder="Usuario" name="usuario" value={formik.values.usuario} error={formik.errors.usuario} onChange={handleChange} />
+                </div>
+                <div>
+                  <FiLock style={{ color: '#fff', position: 'absolute' }} />
+                  <input type="password" placeholder="Contraseña" name="contrasena" value={formik.values.contrasena} error={formik.errors.contrasena} onChange={handleChange} />
+                </div>
+                <section>
+                  <button type="submit">Iniciar Sesión</button>
+                  <p>Restablecer contraseña</p>
+                </section>
+              </form>
+            </Formik>
           </div>
         </main>
         <footer>
@@ -48,3 +109,4 @@ const InicioSesion = () => {
 };
 
 export default InicioSesion;
+
