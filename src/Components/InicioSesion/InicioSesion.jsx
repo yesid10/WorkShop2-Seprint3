@@ -46,7 +46,7 @@ const InicioSesion = () => {
     if (validationFuction) {
       Swal.fire(
         'Good job!',
-        'You clicked the button!',
+        `Bienvenid@ ${userInit.nombre}`,
         'success',
       ).then(() => {
         navigate("/home");
@@ -55,8 +55,8 @@ const InicioSesion = () => {
 
     } else {
       Swal.fire(
-        'Good job!',
-        'You clicked the button!',
+        'Oops!',
+        'Datos erróneos!',
         'error'
       );
     }
