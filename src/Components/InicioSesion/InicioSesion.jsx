@@ -30,24 +30,34 @@ const InicioSesion = () => {
     }
   });
 
-  const validationFuction = usuarios.some(person => person.correo === usuario && person.contraseña === contrasena);
-  console.log(validationFuction);
+
   const navigate = useNavigate();
 
-  if (validationFuction) {
-    navigate("/home");
-  } else {
-    Swal.fire(
-      'Good job!',
-      'You clicked the button!',
-      'error'
-    );
-  }
+
 
   const onSubmit = (formValue, { resetForm }) => {
-    if (formValue) {
-      setDatos(formValue);
-      resetForm();
+    const validationFuction = usuarios.some(person => person.correo === formValue.usuario && person.contraseña === formValue.contrasena);
+    console.log(validationFuction);
+    // if (Object.entries(formValue).length) {
+    setDatos(formValue);
+    resetForm();
+    //}
+    if (validationFuction) {
+      Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success',
+      ).then(() => {
+        navigate("/home");
+      });
+
+
+    } else {
+      Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'error'
+      );
     }
   };
 
