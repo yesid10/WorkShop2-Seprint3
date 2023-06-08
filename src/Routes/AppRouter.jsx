@@ -11,8 +11,8 @@ export const searchParamsContext = createContext({});
 
 const AppRouter = () => {
     const [usuarios, setUsuarios] = useState([]);
-    const [datos, setDatos] = useState({});
-    const { usuario, contrasena } = datos;
+    const [user, setUser] = useState({});
+    
     return (
         <>
             <BrowserRouter>
@@ -21,10 +21,8 @@ const AppRouter = () => {
                         {
                             usuarios,
                             setUsuarios,
-                            datos,
-                            setDatos,
-                            usuario,
-                            contrasena,
+                            user,
+                            setUser
                         }
                     }
                 >

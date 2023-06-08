@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 });
 
 const InicioSesion = () => {
-  const { usuarios, setUsuarios, datos, setDatos, usuario, contrasena } = useContext(searchParamsContext);
+  const { usuarios, setUsuarios, setUser } = useContext(searchParamsContext);
 
   useEffect(() => {
     if (usuarios.length === 0) {
@@ -37,9 +37,10 @@ const InicioSesion = () => {
 
   const onSubmit = (formValue, { resetForm }) => {
     const validationFuction = usuarios.some(person => person.correo === formValue.usuario && person.contraseña === formValue.contrasena);
-    console.log(validationFuction);
+    const userInit = usuarios.find(person => person.correo === formValue.usuario && person.contraseña === formValue.contrasena);
+    setUser(userInit)
+      // console.log(validationFuction);
     // if (Object.entries(formValue).length) {
-    setDatos(formValue);
     resetForm();
     //}
     if (validationFuction) {
@@ -59,7 +60,9 @@ const InicioSesion = () => {
         'error'
       );
     }
+    
   };
+  
 
   return (
     <div className="body">
