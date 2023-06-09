@@ -8,11 +8,15 @@ import NotFound from '../Components/NotFound/NotFound'
 
 
 export const searchParamsContext = createContext({});
-
+export const ShopContext = createContext()
+export const PizzasContext = createContext()
 const AppRouter = () => {
     const [usuarios, setUsuarios] = useState([]);
     const [datos, setDatos] = useState({});
     const { usuario, contrasena } = datos;
+    const [shop, setShop] = useState({})
+    const [pizzas, setPizzas] = useState([])
+    
     return (
         <>
             <BrowserRouter>
@@ -28,6 +32,8 @@ const AppRouter = () => {
                         }
                     }
                 >
+                     <PizzasContext.Provider value={{ pizzas, setPizzas }}>
+                    <ShopContext.Provider value={{ shop, setShop }}>
                     <Routes>
                         <Route index path='/' element={<InicioSesion />} />
                         <Route path='home' element={<Home />} />
@@ -36,6 +42,8 @@ const AppRouter = () => {
                         <Route path='compra' element={<Carrito />} />
                         <Route path='*' element={<NotFound />} />
                     </Routes>
+                    </ShopContext.Provider>
+                    </PizzasContext.Provider>
                 </searchParamsContext.Provider>
 
             </BrowserRouter>
