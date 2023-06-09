@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Geologica&display=swap');
+body {
+  background-color: #fdefee;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  &__bienvenida {
+    display: flex;
+    flex-direction: column;
+    h1 {
+      font-size: 24px;
+      font-family: 'Geologica', sans-serif;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  &__disponibles {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    h2 {
+      font-size: 20px;
+      font-family: 'Geologica', sans-serif;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  &__pizzas {
+    display: flex;
+    flex-direction: column;
+    h2 {
+      color: white;
+      position: relative;
+      top: -80px;
+      left: 25px;
+      font-size: 16px;
+      width: 150px;
+    }
+
+    button {
+      display: flex;
+      position: relative;
+      top: -110px;
+      left: 170px;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background-color: #fb164c;
+      color: white;
+      border: none;
+      width: 83px;
+      height: 30px;
+      border-radius: 23px;
+      h4 {
+        font-weight: 800;
+      }
+      h3 {
+        font-size: 12px;
+        font-weight: lighter;
+      }
+    }
+  }
+}
+
+.contenedor__item {
+  width: 90%;
+  position: relative;
+  margin: auto;
+}
+.contenedor__item::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 8));
+  border-radius: 10px;
+}
+.contenedor__img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
