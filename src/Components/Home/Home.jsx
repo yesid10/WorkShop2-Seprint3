@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { get } from "../../services/apipizza";
 import "./home.scss";
 import Cupones from "../cupones/Cupones";
 import { Link } from "react-router-dom";
+import { searchParamsContext } from "../../Routes/AppRouter";
 
 const Home = () => {
   const [frontends, setFrontends] = useState([]);
   const [javascripts, setjavascript] = useState([]);
 
+  const { user, setpizza } = useContext(searchParamsContext);
+  console.log(user);
   const getfrontends = async () => {
     const getfrontend = await get("frontends");
     setFrontends(getfrontend);
@@ -24,6 +27,7 @@ const Home = () => {
     console.log(pizza);
     const findpizza = frontends.find((item) => item.id === pizza);
     console.log(findpizza);
+    setpizza(findpizza);
   };
 
   useEffect(() => {
@@ -35,8 +39,11 @@ const Home = () => {
     <header className="header">
       <div className="header__bienvenida">
         <h1>Home</h1>
-        {/* mapero de usuarios */}
-        <p>!Que bueno verte!</p>
+        {/*usuari@ */}
+        <p>!Que bueno verte {user.nombre} !</p>
+        <figure>
+          <img src={user.imagen} alt={user.nombre} />
+        </figure>
       </div>
       <div className="header__disponibles">
         <h2>Pizzas disponibles</h2>
