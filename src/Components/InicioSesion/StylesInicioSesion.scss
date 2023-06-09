@@ -1,40 +1,155 @@
-.main{
-    background-image: url('https://img.freepik.com/foto-gratis/hojas-menta-secas-rocian-sobre-pizza-pollo_140725-5011.jpg?size=626&ext=jpg&ga=GA1.1.922502611.1677085759&semt=sph');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Geologica&display=swap');
+
+
+
+.body {
+    background-image: url('https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80');
+    display: flex;
     width: 100%;
     height: 100vh;
     background-size: cover;
     background-position: center;
-    display: flex;
-    flex-direction: column;
-     padding: 20px;
-    &__title{
-        .iconPizza{
-            color: #fff;
-            transform: rotate(-75deg);
-         }
-         span{
-            p{
-                color: #fff;
-            }
-         }
+
+    &__opacity {
+        width: 100%;
+        height: 100vh;
+        background-color: #1f0b0b;
+        opacity: .75;
+        padding: 3% 8%;
     }
-    
-    &__cuenta {
-       h2 {
-        font-size: 14px;
-        color: white;
-       }
-    }
-    &__registro{
-        h3 {
-            color: white;
-            
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            display: flex;
+            position: relative;
+            transform: rotate(-130deg);
+            width: 6rem;
         }
-        h1{
-            color: white;
-        }
+
         p {
-            color: white;
+            color: #fff;
+            font-family: 'Concert One', cursive;
+            font-size: 1.5rem;
+            margin-top: .3rem;
         }
     }
+
+    &__main {
+        margin-top: 2.5rem;
+
+        h3 {
+            color: #fff;
+            font-family: 'Geologica', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        p {
+            color: #fff;
+            font-family: 'Geologica', sans-serif;
+            font-size: .8rem;
+            margin-top: .4rem;
+        }
+
+        form {
+
+            div {
+                display: flex;
+                align-items: center;
+                margin-top: 1rem;
+
+                input {
+                    width: 100%;
+                    padding-bottom: .4rem;
+                    padding-left: 1.3rem;
+                    padding-top: .7rem;
+                    background-color: transparent;
+                    border: 0;
+                    border-bottom: .1rem solid #c0c0c0;
+                    color: #fff;
+
+                    &::placeholder {
+                        color: #fff;
+                        font-family: 'Geologica', sans-serif;
+                    }
+                    &:focus {
+                        outline: none;
+                        &::placeholder {
+                            transform: translateY(-12px);
+                            transition: transform .3s ;
+                        }
+                    }
+                }
+            }
+            section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                button {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 1rem;
+                    background-color: #fff;
+                    font-family: 'Geologica', sans-serif;
+                    font-size: 1rem;
+                    padding: .7rem 0rem;
+                    cursor: pointer;
+                    border: 0;
+                    border-radius: .3rem;
+
+                    &:hover {
+                        transform: scale(.9);
+                        transition: transform .3s ease-in-out;
+                    }
+                }
+
+                p {
+                    font-family: 'Geologica', sans-serif;
+                    font-size: .9rem;
+                    margin-top: 1.4rem;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3.3rem;
+
+        span {
+            font-family: 'Geologica', sans-serif;
+            color: #fff;
+            font-size: .8rem;
+
+        }
+
+        p {
+            font-family: 'Geologica', sans-serif;
+            color: #fff;
+            margin-top: .4rem;
+            font-size: .99rem;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+
 }
