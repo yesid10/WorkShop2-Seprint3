@@ -1,72 +1,71 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./StylesInicioSesion.scss";
 import pizza from '../../assets/Images/PizzaLogo.png'
 import { FiUser } from 'react-icons/fi';
 import { FiLock } from 'react-icons/fi';
 import { getApiFake } from "../services/fuctionGet";
-import { Formik, useFormik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from 'yup'
-import Swal from "sweetalert2";
 import { searchParamsContext } from "../../Routes/AppRouter";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-
-
+const validationSchema = Yup.object({
+  usuario: Yup.string().email('El correo electrónico no es válido').required('Campo obligatorio'),
+  contrasena: Yup.string().required('Campo obligatorio'),
+});
 
 const InicioSesion = () => {
-
-  const { usuarios, setUsuarios, datos, setDatos, usuario, contrasena } = useContext(searchParamsContext);
-  //console.log(usuario, contrasena);
-
-
-  const validationFuction = usuarios.some(person => person.correo === usuario && person.contraseña === contrasena);
-  //console.log(validationFuction);
-  const navigate = useNavigate();
-
-  if (validationFuction) {
-    navigate("/home")
-  } 
-
-
+  const { usuarios, setUsuarios, setUser } = useContext(searchParamsContext);
 
   useEffect(() => {
-    getApiFake('usuarios')
-      .then((response) => {
-        if (usuarios.length === 0) {
+    if (usuarios.length === 0) {
+      getApiFake('usuarios')
+        .then((response) => {
           setUsuarios(response);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  });
-
-  const formik = useFormik({
-    initialValues: {
-      usuario: "",
-      contrasena: "",
-    },
-    validationSchema: Yup.object({
-      usuario: Yup.string().required(true),
-      contrasena: Yup.string().required(true),
-    }),
-    onSubmit: (formValue, { resetForm }) => {
-      if (formValue) {
-        setDatos(formValue);
-        //console.log(formValue);
-        resetForm();
-      }
-
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   });
 
-  const handleChange = (event) => {
-    event.preventDefault();
-    formik.handleChange(event);
+
+  const navigate = useNavigate();
+
+
+
+  const onSubmit = (formValue, { resetForm }) => {
+    const validationFuction = usuarios.some(person => person.correo === formValue.usuario && person.contraseña === formValue.contrasena);
+    const userInit = usuarios.find(person => person.correo === formValue.usuario && person.contraseña === formValue.contrasena);
+    setUser(userInit)
+      // console.log(validationFuction);
+    // if (Object.entries(formValue).length) {
+    resetForm();
+    //}
+    if (validationFuction) {
+      Swal.fire(
+        'Good job!',
+        `Bienvenid@ ${userInit.nombre}`,
+        'success',
+      ).then(() => {
+        navigate("/home");
+      });
+
+
+    } else {
+      Swal.fire(
+        'Oops!',
+        'Datos erróneos!',
+        'error'
+      );
+    }
+    
   };
   
+
   return (
-    <body className="body">
+    <div className="body">
       <div className="body__opacity">
         <header className="body__header">
           <img src={pizza} alt="logo pizza" />
@@ -80,21 +79,32 @@ const InicioSesion = () => {
             </p>
           </div>
           <div>
-            <Formik>
-              <form onSubmit={formik.handleSubmit}>
+            <Formik
+              initialValues={{
+                usuario: "",
+                contrasena: "",
+              }}
+              validationSchema={validationSchema}
+              onSubmit={onSubmit}
+            >
+              <Form>
                 <div>
                   <FiUser style={{ color: '#fff', position: 'absolute' }} />
-                  <input type="text" placeholder="Usuario" name="usuario" value={formik.values.usuario} error={formik.errors.usuario} onChange={handleChange} />
+                  <Field type="text" placeholder="Usuario" name="usuario" />
+
                 </div>
+                <ErrorMessage style={{ color: '#fb4444ef', fontSize: '1.1rem', fontFamily: 'Geologica, sans-serif' }} name='usuario' component='div' />
                 <div>
                   <FiLock style={{ color: '#fff', position: 'absolute' }} />
-                  <input type="password" placeholder="Contraseña" name="contrasena" value={formik.values.contrasena} error={formik.errors.contrasena} onChange={handleChange} />
+                  <Field type="password" placeholder="Contraseña" name="contrasena" />
+
                 </div>
+                <ErrorMessage style={{ color: '#fb4444ef', fontSize: '1.1rem', fontFamily: 'Geologica, sans-serif' }} name='contrasena' component='div' />
                 <section>
                   <button type="submit">Iniciar Sesión</button>
                   <p>Restablecer contraseña</p>
                 </section>
-              </form>
+              </Form>
             </Formik>
           </div>
         </main>
@@ -103,8 +113,7 @@ const InicioSesion = () => {
           <p>Regístrate aquí</p>
         </footer>
       </div>
-
-    </body>
+    </div>
   );
 };
 

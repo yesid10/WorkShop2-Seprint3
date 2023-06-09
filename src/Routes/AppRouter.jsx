@@ -1,54 +1,43 @@
-import React, { createContext, useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from '../Components/Home/Home'
-import InicioSesion from '../Components/InicioSesion/InicioSesion'
-import DetallePizza from '../Components/DetallePizza/DetallePizza'
-import Carrito from '../Components/Carrito/Carrito'
-import NotFound from '../Components/NotFound/NotFound'
-
+import React, { createContext, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "../Components/Home/Home";
+import InicioSesion from "../Components/InicioSesion/InicioSesion";
+import DetallePizza from "../Components/DetallePizza/DetallePizza";
+import Carrito from "../Components/Carrito/Carrito";
+import NotFound from "../Components/NotFound/NotFound";
 
 export const searchParamsContext = createContext({});
-export const ShopContext = createContext()
-export const PizzasContext = createContext()
+
 const AppRouter = () => {
-    const [usuarios, setUsuarios] = useState([]);
-    const [datos, setDatos] = useState({});
-    const { usuario, contrasena } = datos;
-    const [shop, setShop] = useState({})
-    const [pizzas, setPizzas] = useState([])
-    
-    return (
-        <>
-            <BrowserRouter>
-                <searchParamsContext.Provider
-                    value={
-                        {
-                            usuarios,
-                            setUsuarios,
-                            datos,
-                            setDatos,
-                            usuario,
-                            contrasena,
-                        }
-                    }
-                >
-                     <PizzasContext.Provider value={{ pizzas, setPizzas }}>
-                    <ShopContext.Provider value={{ shop, setShop }}>
-                    <Routes>
-                        <Route index path='/' element={<InicioSesion />} />
-                        <Route path='home' element={<Home />} />
-                        <Route path='detallepizza' element={<DetallePizza />} />
-                        <Route path='carrito' element={<Carrito />} />
-                        <Route path='compra' element={<Carrito />} />
-                        <Route path='*' element={<NotFound />} />
-                    </Routes>
-                    </ShopContext.Provider>
-                    </PizzasContext.Provider>
-                </searchParamsContext.Provider>
+  const [usuarios, setUsuarios] = useState([]);
+  const [user, setUser] = useState({});
+  const [pizza, setpizza] = useState([]);
 
-            </BrowserRouter>
-        </>
-    )
-}
+  return (
+    <>
+      <BrowserRouter>
+        <searchParamsContext.Provider
+          value={{
+            usuarios,
+            setUsuarios,
+            user,
+            setUser,
+            pizza,
+            setpizza,
+          }}
+        >
+          <Routes>
+            <Route index path="/" element={<InicioSesion />} />
+            <Route path="home" element={<Home />} />
+            <Route path="detallepizza" element={<DetallePizza />} />
+            <Route path="carrito" element={<Carrito />} />
+            <Route path="compra" element={<Carrito />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </searchParamsContext.Provider>
+      </BrowserRouter>
+    </>
+  );
+};
 
-export default AppRouter
+export default AppRouter;
