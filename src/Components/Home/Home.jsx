@@ -13,7 +13,7 @@ const Home = () => {
   const { user, setpizza } = useContext(searchParamsContext);
   console.log(user);
   const getHome = async () => {
-    const gethome = await get("Home");
+    const gethome = await get("home");
     sethome(gethome);
     console.log(home);
   };
