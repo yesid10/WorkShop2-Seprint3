@@ -4,35 +4,30 @@ import "./home.scss";
 import Cupones from "../cupones/Cupones";
 import { Link } from "react-router-dom";
 import { searchParamsContext } from "../../Routes/AppRouter";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Home = () => {
-  const [frontends, setFrontends] = useState([]);
-  const [javascripts, setjavascript] = useState([]);
+  const [home, sethome] = useState([]);
 
   const { user, setpizza } = useContext(searchParamsContext);
   console.log(user);
-  const getfrontends = async () => {
-    const getfrontend = await get("frontends");
-    setFrontends(getfrontend);
-    console.log(frontends);
-  };
-  const getjavascripts = async () => {
-    const getjavascript = await get("javascript");
-    setjavascript(getjavascript);
-    console.log(javascripts);
+  const getHome = async () => {
+    const gethome = await get("Home");
+    sethome(gethome);
+    console.log(home);
   };
 
   const handleclick = (id) => {
     const pizza = id;
     console.log(pizza);
-    const findpizza = frontends.find((item) => item.id === pizza);
+    const findpizza = home.find((item) => item.id === pizza);
     console.log(findpizza);
     setpizza(findpizza);
   };
 
   useEffect(() => {
-    getfrontends();
-    getjavascripts();
+    getHome();
   }, []);
 
   return (
@@ -51,46 +46,63 @@ const Home = () => {
       </div>
       <Cupones />
       <div className="header__pizzas">
-        {frontends.map((front, index) => (
-          <Link to={"/detallepizza"} style={{ textDecoration: "none" }}>
-            <div key={index} onClick={() => handleclick(front.id)}>
-              <div className="contenedor__item">
-                <img
-                  className="contenedor__img"
-                  src={front.image}
-                  alt={front.name}
-                />
-              </div>
-              <h2>{front.nombre}</h2>
-              <button>
-                <strong>
-                  <h4>${front.precio} </h4>
-                </strong>
-                <h3>MXN</h3>
-              </button>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      <div className="header__pizzas">
-        {javascripts.map((java, index) => (
-          <Link to={"/detallepizza"} style={{ textDecoration: "none" }}>
-            <div key={index} onClick={() => handleclick(java.id)}>
-              <div className="contenedor__item">
-                <img
-                  className="contenedor__img"
-                  src={java.image}
-                  alt={java.name}
-                />
-              </div>
-              <h2>{java.nombre}</h2>
-              <button>
-                <strong>
-                  <h4>${java.precio} </h4>
-                </strong>
-                <h3>MXN</h3>
-              </button>
+        {home.map((front, index) => (
+          <Link
+            to={"/detallepizza"}
+            style={{ textDecoration: "none" }}
+            key={index}
+          >
+            <div onClick={() => handleclick(front.id)}>
+              <Carousel
+                showThumbs={false}
+                autoPlay={true}
+                interval={2500}
+                infiniteLoop={true} // Agregado para el bucle infinito
+                className="custom-carousel"
+              >
+                <div className="contenedor__item">
+                  <img
+                    className="contenedor__img"
+                    src={front.image1}
+                    alt={front.nombre}
+                  />
+                  <h2>{front.nombre}</h2>
+                  <button>
+                    <strong>
+                      <h4>${front.precio}</h4>
+                    </strong>
+                    <h3>MXN</h3>
+                  </button>
+                </div>
+                <div className="contenedor__item">
+                  <img
+                    className="contenedor__img"
+                    src={front.image2}
+                    alt={front.nombre}
+                  />
+                  <h2>{front.nombre}</h2>
+                  <button>
+                    <strong>
+                      <h4>${front.precio}</h4>
+                    </strong>
+                    <h3>MXN</h3>
+                  </button>
+                </div>
+                <div className="contenedor__item">
+                  <img
+                    className="contenedor__img"
+                    src={front.image3}
+                    alt={front.nombre}
+                  />
+                  <h2>{front.nombre}</h2>
+                  <button>
+                    <strong>
+                      <h4>${front.precio}</h4>
+                    </strong>
+                    <h3>MXN</h3>
+                  </button>
+                </div>
+              </Carousel>
             </div>
           </Link>
         ))}
