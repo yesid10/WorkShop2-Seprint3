@@ -12,6 +12,7 @@ const AppRouter = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [user, setUser] = useState({});
   const [pizza, setpizza] = useState([]);
+  const [count, setCount] = useState(1);
 
   return (
     <>
@@ -24,12 +25,14 @@ const AppRouter = () => {
             setUser,
             pizza,
             setpizza,
+            count, 
+            setCount
           }}
         >
           <Routes>
             <Route index path="/" element={<InicioSesion />} />
             <Route path="home" element={<Home />} />
-            <Route path="detallepizza" element={<DetallePizza />} />
+            <Route path="detallepizza/:name" element={<DetallePizza />} />
             <Route path="carrito" element={<Carrito />} />
             <Route path="compra" element={<Carrito />} />
             <Route path="*" element={<NotFound />} />

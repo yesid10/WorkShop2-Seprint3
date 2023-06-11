@@ -2,12 +2,13 @@ import React, { useEffect, useState, useContext } from "react";
 import { get } from "../../services/apipizza";
 import "./home.scss";
 import Cupones from "../cupones/Cupones";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { searchParamsContext } from "../../Routes/AppRouter";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Home = () => {
+  
   const [home, sethome] = useState([]);
 
   const { user, setpizza } = useContext(searchParamsContext);
@@ -48,7 +49,7 @@ const Home = () => {
       <div className="header__pizzas">
         {home.map((front, index) => (
           <Link
-            to={"/detallepizza"}
+            to={`/detallepizza/${front.nombre}`}
             style={{ textDecoration: "none" }}
             key={index}
           >
