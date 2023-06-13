@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import { get } from "../../services/apipizza";
+import { get } from "../../serviceshome/apipizza";
 import "./home.scss";
 import Cupones from "../cupones/Cupones";
 import { Link } from "react-router-dom";
 import { searchParamsContext } from "../../Routes/AppRouter";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Menu from "../menu/Menu";
+
 
 const Home = () => {
   const [home, sethome] = useState([]);
@@ -36,7 +38,7 @@ const Home = () => {
         <h1>Home</h1>
         {/*usuari@ */}
         <p>!Que bueno verte {user.nombre} !</p>
-        <figure>
+        <figure className="header__usuario">
           <img src={user.imagen} alt={user.nombre} />
         </figure>
       </div>
@@ -107,6 +109,7 @@ const Home = () => {
           </Link>
         ))}
       </div>
+      <Menu/>
     </header>
   );
 };
