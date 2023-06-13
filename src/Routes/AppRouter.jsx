@@ -6,6 +6,7 @@ import DetallePizza from "../Components/DetallePizza/DetallePizza";
 import Carrito from "../Components/Carrito/Carrito";
 import NotFound from "../Components/NotFound/NotFound";
 import BuscarPizaa from "../Components/Home/BuscarPizza/BuscarPizaa";
+import Compra from '../Components/Compra/Compra'
 
 export const searchParamsContext = createContext({});
 
@@ -43,7 +44,7 @@ const AppRouter = () => {
             <Route path="buscarpizza" element={<BuscarPizaa />} />
             <Route path="detallepizza" element={<DetallePizza />} />
             <Route path="carrito" element={<Carrito />} />
-            <Route path="compra" element={<Carrito />} />
+            <Route path="compra" element={<Compra />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </searchParamsContext.Provider>
