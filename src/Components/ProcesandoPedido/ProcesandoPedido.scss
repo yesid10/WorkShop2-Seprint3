@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Geologica', sans-serif;
+  }
+  .prueba {
+    border-radius: 7px;
+    margin-top: 16px;
+    width: 59%;
+    margin-left: 3.5rem;
+
+  }
+  .contenedor__procesado {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  
+    gap: 30px;
+    background-color:#ffe0e6;
+    height: 100vh;
+  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .titulo__procesado {
+    font-weight: 900;
+    font-size: 22px;
+  }
+  .subtitulo{
+    color: dimgrey;
+    font-size: .8rem;
+  }
+  .boton__procesado {
+    border-style: none;
+    height: 54px;
+    color: white;
+    background-color: #FF0A54;
+    width: 90%;
+    border-radius: 3px;
+    margin-top: 106px;
+  }

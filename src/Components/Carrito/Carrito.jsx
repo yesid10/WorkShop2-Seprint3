@@ -30,7 +30,7 @@ const Carrito = () => {
   const onSubmit = (values) => {
     console.log(values);
     if(values){
-      navigate('/compra')
+      navigate('/procesandoPedido')
     }
   };
   
