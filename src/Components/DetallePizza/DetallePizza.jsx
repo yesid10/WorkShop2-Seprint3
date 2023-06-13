@@ -14,12 +14,12 @@ const DetallePizza = () => {
   const { pizza } = useContext(searchParamsContext);
 
   console.log(pizza)
-  
- 
+
+
   const { count, setCount, precioFinal, setPrecioFinal, setNombrePizza } = useContext(searchParamsContext);
-  const {precio, nombre} = pizza;
+  const { precio, nombre } = pizza;
   setNombrePizza(nombre);
-  setPrecioFinal(precio*count)
+  setPrecioFinal(precio * count)
 
 
   const handleMinus = () => {
@@ -45,12 +45,15 @@ const DetallePizza = () => {
 
     <div className='detallePizza'>
       <div className='detallePizza__info'>
-        <div className='detallePizza__title'>
-          <MdArrowBackIosNew style={{ color: '#fff', fontWeight: 'bold' }} />
-          <p>
-            Todas las Pizzas
-          </p>
-        </div>
+        <Link to={'/home'}>
+          <div className='detallePizza__title'>
+            <MdArrowBackIosNew style={{ color: '#fff', fontWeight: 'bold' }} />
+            <p>
+              Todas las Pizzas
+            </p>
+          </div>
+        </Link>
+
         <div >
           <Carousel
             showThumbs={false}
