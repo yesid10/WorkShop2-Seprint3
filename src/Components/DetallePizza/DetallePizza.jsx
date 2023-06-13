@@ -12,8 +12,14 @@ import { Link } from 'react-router-dom';
 
 const DetallePizza = () => {
   const { pizza } = useContext(searchParamsContext);
+
   console.log(pizza)
-  const { count, setCount } = useContext(searchParamsContext);
+  
+ 
+  const { count, setCount, precioFinal, setPrecioFinal, setNombrePizza } = useContext(searchParamsContext);
+  const {precio, nombre} = pizza;
+  setNombrePizza(nombre);
+  setPrecioFinal(precio*count)
 
 
   const handleMinus = () => {
@@ -78,7 +84,7 @@ const DetallePizza = () => {
         <div className='detallePizza__description'>
           <h3>{pizza.nombre}</h3>
           <div>
-            <button> <span>${pizza.precio * count}</span> MXN </button>
+            <button> <span>${precioFinal}</span> MXN </button>
             <div>
               <BsFillStarFill style={{ color: '#fff' }} />
               445 Reviews

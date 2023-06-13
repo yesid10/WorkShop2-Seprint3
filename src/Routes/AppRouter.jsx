@@ -13,6 +13,8 @@ const AppRouter = () => {
   const [user, setUser] = useState({});
   const [pizza, setpizza] = useState([]);
   const [count, setCount] = useState(1);
+ const [precioFinal, setPrecioFinal] = useState();
+ const [nombrePizza, setNombrePizza] = useState('');
 
   return (
     <>
@@ -26,7 +28,11 @@ const AppRouter = () => {
             pizza,
             setpizza,
             count, 
-            setCount
+            setCount,
+            precioFinal, 
+            setPrecioFinal,
+            nombrePizza,
+            setNombrePizza
           }}
         >
           <Routes>
