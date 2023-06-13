@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_FAKE = 'https://backendpizza-production.up.railway.app/';
+const URL_API = "http://localhost:3000/pizzas"
 
 export const getApiFake = async (endpoint) => {
     try {
@@ -12,3 +13,14 @@ export const getApiFake = async (endpoint) => {
         return [];
     }
 }
+
+// export const getPizzas = async () => {
+//     try {
+//       const response = await axios.get(`${URL_API}/`);
+//       console.log(response.data);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+  

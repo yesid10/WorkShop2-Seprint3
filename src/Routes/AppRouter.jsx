@@ -11,37 +11,44 @@ import Compra from '../Components/Compra/Compra'
 export const searchParamsContext = createContext({});
 
 const AppRouter = () => {
-    const [usuarios, setUsuarios] = useState([]);
-    const [datos, setDatos] = useState({});
-    const { usuario, contrasena } = datos;
-    return (
-        <>
-            <BrowserRouter>
-                <searchParamsContext.Provider
-                    value={
-                        {
-                            usuarios,
-                            setUsuarios,
-                            datos,
-                            setDatos,
-                            usuario,
-                            contrasena,
-                        }
-                    }
-                >
-                    <Routes>
-                        <Route index path='/' element={<InicioSesion />} />
-                        <Route path='home' element={<Home />} />
-                        <Route path='detallepizza' element={<DetallePizza />} />
-                        <Route path='carrito' element={<Carrito />} />
-                        <Route path='compra' element={<Compra/>} />
-                        <Route path='*' element={<NotFound />} />
-                    </Routes>
-                </searchParamsContext.Provider>
+  const [usuarios, setUsuarios] = useState([]);
+  const [user, setUser] = useState({});
+  const [pizza, setpizza] = useState([]);
+  const [count, setCount] = useState(1);
+ const [precioFinal, setPrecioFinal] = useState();
+ const [nombrePizza, setNombrePizza] = useState('');
 
-            </BrowserRouter>
-        </>
-    )
-}
+  return (
+    <>
+      <BrowserRouter>
+        <searchParamsContext.Provider
+          value={{
+            usuarios,
+            setUsuarios,
+            user,
+            setUser,
+            pizza,
+            setpizza,
+            count, 
+            setCount,
+            precioFinal, 
+            setPrecioFinal,
+            nombrePizza,
+            setNombrePizza
+          }}
+        >
+          <Routes>
+            <Route index path="/" element={<InicioSesion />} />
+            <Route path="home" element={<Home />} />
+            <Route path="detallepizza/:name" element={<DetallePizza />} />
+            <Route path="carrito" element={<Carrito />} />
+            <Route path="compra" element={<Compra />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </searchParamsContext.Provider>
+      </BrowserRouter>
+    </>
+  );
+};
 
-export default AppRouter
+export default AppRouter;

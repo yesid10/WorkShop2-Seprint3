@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Concert+One&family=Geologica&display=swap");
+body {
+  background-color: #fdefee;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  &__bienvenida {
+    display: flex;
+    flex-direction: column;
+    h1 {
+      font-size: 24px;
+      font-family: "Geologica", sans-serif;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  &__disponibles {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    h2 {
+      font-size: 20px;
+      font-family: "Geologica", sans-serif;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  &__pizzas {
+    display: flex;
+    flex-direction: column;
+    h2 {
+      color: white;
+      position: relative;
+      text-align: left;
+      top: -70px;
+      left: 12px;
+      font-size: 16px;
+      width: 150px;
+    }
+
+    button {
+      display: flex;
+      position: relative;
+      top: -103px;
+      left: 170px;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background-color: #fb164c;
+      color: white;
+      border: none;
+      width: 78px;
+      height: 30px;
+      border-radius: 23px;
+      h4 {
+        font-weight: 800;
+      }
+      h3 {
+        font-size: 12px;
+        font-weight: lighter;
+      }
+    }
+  }
+}
+
+// YourCarouselStyles.scss
+
+.custom-carousel {
+  .carousel .thumbs-wrapper {
+    display: flex; // Oculta las flechas
+  }
+
+  .carousel .carousel-status {
+    display: none; // Oculta el contador de imágenes
+  }
+
+  .carousel .carousel-arrow {
+    display: none; // Oculta las flechas para pasar las imágenes
+  }
+  .carousel .control-dots {
+    position: relative;
+    bottom: -170px;
+    margin: 10px 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+  }
+  .carousel .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 60%;
+
+    li {
+      margin: 0 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: gray;
+
+      &.selected {
+        background-color: black; // Estilo para el punto activo
+      }
+    }
+  }
+}
+
+.carousel.carousel-slider .control-arrow {
+  display: none;
+}
+
+// Estilos personalizados para el carrusel
+.carousel.carousel-slider {
+  // Agrega aquí tus estilos personalizados
+  // por ejemplo:
+  background-color: #f1f1f1;
+  // ...
+}
+
+.contenedor__item {
+  width: 90%;
+  position: relative;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.contenedor__item::before {
+  content: "";
+  width: 100%;
+  height: 78%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgb(0, 0, 0));
+  border-radius: 10px;
+}
+.contenedor__img {
+  width: 170px;
+  height: 170px;
+  display: block;
+  border-radius: 10px;
+}

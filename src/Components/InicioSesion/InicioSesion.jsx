@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 });
 
 const InicioSesion = () => {
-  const { usuarios, setUsuarios, datos, setDatos, usuario, contrasena } = useContext(searchParamsContext);
+  const { usuarios, setUsuarios, setUser } = useContext(searchParamsContext);
 
   useEffect(() => {
     if (usuarios.length === 0) {
@@ -30,26 +30,39 @@ const InicioSesion = () => {
     }
   });
 
-  const validationFuction = usuarios.some(person => person.correo === usuario && person.contraseña === contrasena);
-  console.log(validationFuction);
+
   const navigate = useNavigate();
 
-  if (validationFuction) {
-    navigate("/home");
-  } else {
-    Swal.fire(
-      'Good job!',
-      'You clicked the button!',
-      'error'
-    );
-  }
+
 
   const onSubmit = (formValue, { resetForm }) => {
-    if (formValue) {
-      setDatos(formValue);
-      resetForm();
+    const validationFuction = usuarios.some(person => person.correo === formValue.usuario && person.contraseña === formValue.contrasena);
+    const userInit = usuarios.find(person => person.correo === formValue.usuario && person.contraseña === formValue.contrasena);
+    setUser(userInit)
+      // console.log(validationFuction);
+    // if (Object.entries(formValue).length) {
+    resetForm();
+    //}
+    if (validationFuction) {
+      Swal.fire(
+        'Good job!',
+        `Bienvenid@ ${userInit.nombre}`,
+        'success',
+      ).then(() => {
+        navigate("/home");
+      });
+
+
+    } else {
+      Swal.fire(
+        'Oops!',
+        'Datos erróneos!',
+        'error'
+      );
     }
+    
   };
+  
 
   return (
     <div className="body">
