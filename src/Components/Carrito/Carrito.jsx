@@ -28,7 +28,6 @@ const Carrito = () => {
   });
   const navigate = useNavigate();
   const onSubmit = (values) => {
-   
     console.log(values);
     if(values){
       navigate('/compra')
