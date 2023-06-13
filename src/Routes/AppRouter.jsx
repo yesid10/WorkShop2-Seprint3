@@ -5,6 +5,7 @@ import InicioSesion from "../Components/InicioSesion/InicioSesion";
 import DetallePizza from "../Components/DetallePizza/DetallePizza";
 import Carrito from "../Components/Carrito/Carrito";
 import NotFound from "../Components/NotFound/NotFound";
+import ProcesandoPedido from "../Components/ProcesandoPedido/ProcesandoPedido";
 
 export const searchParamsContext = createContext({});
 
@@ -34,6 +35,7 @@ const AppRouter = () => {
             <Route path="home" element={<Home />} />
             <Route path="detallepizza/:name" element={<DetallePizza />} />
             <Route path="carrito" element={<Carrito />} />
+            <Route path="procesandoPedido" element={<ProcesandoPedido />} />
             <Route path="compra" element={<Carrito />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
