@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './StylesCarrito.scss';
 import { IoIosArrowBack } from 'react-icons/io';
-import { Button, Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import { searchParamsContext } from '../../Routes/AppRouter';
 import { Link, useNavigate } from 'react-router-dom';
 

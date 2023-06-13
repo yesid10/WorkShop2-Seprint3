@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { searchParamsContext } from '../../Routes/AppRouter';
 import './DetallePizza.scss'
 import { Carousel } from 'react-responsive-carousel';
