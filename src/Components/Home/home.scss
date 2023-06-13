@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Concert+One&family=Geologica&display=swap");
 body {
   background-color: #fdefee;
+  padding-top: 20px;
+  padding-left: 10px;
 }
 .header {
   display: flex;
@@ -14,37 +16,57 @@ body {
     }
     p {
       font-size: 14px;
+      padding-top: 10px;
+      color: gray;
+      font-family: "Geologica", sans-serif;
     }
   }
   &__disponibles {
     display: flex;
     align-items: center;
     gap: 40px;
+    position: relative;
+    top: 20px;
     h2 {
       font-size: 20px;
       font-family: "Geologica", sans-serif;
     }
     p {
-      font-size: 16px;
+      font-size: 14px;
+      color: #fb164c;
+      font-family: "Geologica", sans-serif;
+    }
+  }
+  &__usuario {
+    display: flex;
+    position: absolute;
+    top: 30px;
+    left: 230px;
+    img {
+      width: 50px;
+      border-radius: 50%;
     }
   }
   &__pizzas {
     display: flex;
     flex-direction: column;
+    position: relative;
+    top: -100px;
     h2 {
       color: white;
-      position: relative;
+      position: absolute;
       text-align: left;
-      top: -70px;
+      top: 130px;
       left: 12px;
-      font-size: 16px;
+      font-size: 14px;
       width: 150px;
+      font-family: "Geologica", sans-serif;
     }
 
     button {
       display: flex;
-      position: relative;
-      top: -103px;
+      position: absolute;
+      top: 103px;
       left: 170px;
       align-items: center;
       justify-content: center;
@@ -57,28 +79,50 @@ body {
       border-radius: 23px;
       h4 {
         font-weight: 800;
+        font-family: "Geologica", sans-serif;
       }
       h3 {
         font-size: 12px;
         font-weight: lighter;
+        font-family: "Geologica", sans-serif;
       }
+    }
+  }
+  
+  &__carrito {
+    display: flex;
+    position: fixed;
+    top: 430px;
+    left: 130px;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    border-radius: 50%;
+    -webkit-box-shadow: 6px 21px 60px -15px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 21px 60px -15px rgba(0, 0, 0, 0.75);
+    box-shadow: 6px 21px 60px -15px rgba(0, 0, 0, 0.75);
+    button {
+      background-color: transparent;
+      border: none;
+      color: grey;
     }
   }
 }
 
-// YourCarouselStyles.scss
+
 
 .custom-carousel {
   .carousel .thumbs-wrapper {
-    display: flex; // Oculta las flechas
+    display: flex;
   }
 
   .carousel .carousel-status {
-    display: none; // Oculta el contador de imágenes
+    display: none;
   }
 
   .carousel .carousel-arrow {
-    display: none; // Oculta las flechas para pasar las imágenes
+    display: none;
   }
   .carousel .control-dots {
     position: relative;
@@ -102,7 +146,7 @@ body {
       background-color: gray;
 
       &.selected {
-        background-color: black; // Estilo para el punto activo
+        background-color: black;
       }
     }
   }
@@ -112,24 +156,14 @@ body {
   display: none;
 }
 
-// Estilos personalizados para el carrusel
-.carousel.carousel-slider {
-  // Agrega aquí tus estilos personalizados
-  // por ejemplo:
-  background-color: #f1f1f1;
-  // ...
-}
-
 .contenedor__item {
-  width: 90%;
+  width: 97%;
   position: relative;
-  margin: auto;
-  margin-bottom: 20px;
 }
 .contenedor__item::before {
   content: "";
   width: 100%;
-  height: 78%;
+  height: 100%;
   position: absolute;
   top: 0;
   right: 0;
@@ -141,4 +175,5 @@ body {
   height: 170px;
   display: block;
   border-radius: 10px;
+  display: flex;
 }
